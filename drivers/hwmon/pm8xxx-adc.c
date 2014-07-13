@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2012, Code Aurora Forum. All rights reserved.
+ * Copyright (c) 2011-2013, The Linux Foundation. All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License version 2 and
@@ -1195,6 +1195,7 @@ static int __devexit pm8xxx_adc_teardown(struct platform_device *pdev)
 	int i;
 
 	wake_lock_destroy(&adc_pmic->adc_wakelock);
+	msm_xo_put(adc_pmic->adc_voter);
 	platform_set_drvdata(pdev, NULL);
 	pmic_adc = NULL;
 	if (!pa_therm) {
